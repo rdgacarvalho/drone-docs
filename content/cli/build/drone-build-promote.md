@@ -26,10 +26,27 @@ Example usage, promotes a build by build number:
 $ drone build promote octocat/hello-world 42 production
 ```
 
+Example usage promotes in the pipeline:
+
+```
+kind: pipeline
+name: default
+
+steps:
+- name: test
+  image: node
+  environment:
+    PARAM1: ${PARAM1}
+  commands:
+  - npm install express@$PARAM1
+  - npm test
+```
+
 Example usage, with custom parameters:
 
 ```
 $ drone build promote octocat/hello-world 42 production \
   --param=foo=bar \
   --param=baz=qux \
+  --param=param1=3.0.0
 ```
