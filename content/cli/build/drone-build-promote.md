@@ -36,6 +36,8 @@ steps:
 - name: test
   image: node
   environment:
+    foo: ${foo}
+    baz: ${baz}
     PARAM1: ${PARAM1}
   commands:
   - npm install express@$PARAM1
